@@ -5,6 +5,8 @@ Este programa en **Python** permite analizar información económica y de días 
 1. Los **Top 3 destinos más favorables** para un país, basados en el **Índice de Afinidad Económica (IAE)** y que es más probable a consumir (internacionalmente o nacionalmente), basandonos en PIB de cada país.
 2. Los **Top 3 meses con mayor oportunidad de viaje**, incluyendo al menos **un día festivo por mes**.
 
+## Video
+[link](https://youtu.be/icPNIkfCbuU)
 ---
 
 ## 📂 Archivos requeridos
