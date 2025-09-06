@@ -1,49 +1,91 @@
-# Del Insight a la Acción: Reto de Recomendaciones Estratégicas
+# 🌍 ¿Cómo se relaciona la salud económica con los hábitos de viaje de sus ciudadanos?
 
-<p align="center">
-  <img width="804" height="458" alt="Screenshot 2025-09-02 at 23 01 20"
-       src="https://github.com/user-attachments/assets/1a11c88d-c61c-4355-8ad7-ec95257e0e35" />
-</p>
+Este programa en **Python** permite analizar información económica y de días festivos de distintos países para recomendar:
 
-### Objetivo:
-Aplicar conocimientos de EDA y visualización para detectar patrones relevantes en datos
-reales y convertirlos en recomendaciones claras para un equipo de negocios
-
-Este repositorio contiene los **recursos necesarios** y servirá como espacio para subir las **soluciones de cada equipo**.
+1. Los **Top 3 destinos más favorables** para un país, basados en el **Índice de Afinidad Económica (IAE)** y que es más probable a consumir (internacionalmente o nacionalmente), basandonos en PIB de cada país.
+2. Los **Top 3 meses con mayor oportunidad de viaje**, incluyendo al menos **un día festivo por mes**.
 
 ---
 
-## Estructura del repositorio
-```
-reto/
-│
-├── README.md                 # Instrucciones del reto y de uso del repositorio
-├── recursos/                 # Archivos de apoyo, datasets
-│   └── ...
-└── soluciones/               # Carpeta las soluciones cada equipo
-```
+## 📂 Archivos requeridos
 
-## Reglas de colaboración
+Para que el programa funcione correctamente, necesitas tener los siguientes archivos en tu proyecto:
 
-1. **No modificar la rama `main`**.  
-2. **Cada equipo debe trabajar en su propia rama**: [véase flujo de trabajo](#flujo-de-trabajo-para-equipos)
-3. **Sube tus archivos únicamente dentro de tu carpeta en `soluciones/`**
-4. **No abrir Pull Requests** hacia `main`.  
-- Solo sube commits y pushes a tu rama.  
-- No hagas ningún PR hacia main ni otra rama de otro equipo.
+* `datos/resultados.csv` → Contiene datos de PIB per cápita por país y año.
+* `datos/global_holidays.csv` → Contiene los días festivos públicos de varios países.
+* `IOI.csv` → Archivo con el **Índice de Oportunidad de Intercambio (IOI)** por país y mes.
 
-## Flujo de trabajo para equipos
+⚠️ **Nota importante**: asegúrate de que las rutas y nombres de archivo coincidan exactamente, ya que el código los busca en las carpetas `datos/` y raíz del proyecto.
 
-En la temrinal:
+---
+
+## ⚙️ Instalación
+
+1. Clona este repositorio o descarga los archivos en tu computadora.
+2. Instala las dependencias necesarias (se recomienda usar un entorno virtual):
+
 ```bash
-git clone https://github.com/marielalvarez/DataRush-RecomendacionesEstrategicas # clona el repositorio
-git checkout -b nombre_equipo # crea tu rama del equipo
-# añade tus documentos y despues subelos a remoto:
-git add .
-git commit -m "Solución equipo X"
-git push origin equipo-nombre
-
+pip install pandas numpy
 ```
 
-¡Éxito en el reto! 💡
--- Data Science Club at Tec
+---
+
+## ▶️ Cómo ejecutar el programa
+
+1. Abre una terminal en la carpeta donde se encuentra el archivo principal `.py`.
+2. Ejecuta el programa con:
+
+```bash
+python main.py
+```
+
+---
+
+## 🖥️ Uso del programa
+
+Cuando lo ejecutes, verás un menú interactivo:
+
+```
+=== TOP 3 MESES CON UN DÍA FESTIVO POR PAÍS ===
+
+Países disponibles en el archivo IOI:
+----------------------------------------
+1. ARG
+2. MEX
+3. USA
+...
+
+Opciones:
+1. Buscar top 3 meses con un festivo para un país específico
+2. Salir
+```
+
+* **Opción 1:** Ingresa el código ISO3 de un país (ejemplo: `MEX`) para obtener:
+
+  * Top 3 meses con IOI más alto y un día festivo por mes.
+  * Top 3 destinos más favorables según el IAE para ese país.
+
+* **Opción 2:** Salir del programa.
+
+---
+
+## 📌 Funcionalidades principales
+
+* `calcular_iae(df, iso_pais_origen, year=None)` → Calcula los 3 destinos más favorables para un país.
+* `get_top_3_months_with_holidays(codigo_pais)` → Devuelve los 3 mejores meses con al menos un día festivo.
+* `mostrar_paises_disponibles()` → Muestra todos los países disponibles en el dataset IOI.
+* `obtener_nombre_pais(iso_code)` → Devuelve el nombre de un país a partir de su código ISO3.
+
+---
+
+## 💡 Recomendaciones
+
+* Mantén los archivos CSV actualizados con los últimos datos de PIB y días festivos.
+* Asegúrate de que los nombres de las columnas en los CSV coincidan con los esperados en el código.
+* Usa un entorno virtual para evitar conflictos con otras versiones de Python o librerías.
+
+---
+
+## 📄 Licencia
+
+Este proyecto es de uso educativo y libre para análisis de datos y aprendizaje de Python.
